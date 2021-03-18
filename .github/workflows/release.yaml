@@ -1,0 +1,23 @@
+on:
+  release:
+    types: 
+    - created
+
+name: Publish Docker Image
+env:
+  IMAGE: "openstackcli" 
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+      - name: login 
+        run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
+      - name: Checkout Code
+        uses: actions/checkout@master
+      - name: building
+        run: docker build -t ${{ secrets.REGISTRY_USERNAME }}/${{ env.IMAGE}} -t ${{ secrets.REGISTRY_USERNAME }}/${{ env.IMAGE}}:${GITHUB_REF/refs\/tags\/v/} .
+      - name: pushing
+        run: |
+          docker push ${{ secrets.REGISTRY_USERNAME }}/${{ env.IMAGE}} 
+          docker push ${{ secrets.REGISTRY_USERNAME }}/${{ env.IMAGE}}:${GITHUB_REF/refs\/tags\/v/}
