@@ -2,6 +2,8 @@
 
 An Openstack CLI tool in Docker container in order to be used into your CI/CD pipelines or Kubernetes clusters.
 
+The creation of this project was motivated by a [missing feature in OVH's Managed Kubernetes](https://github.com/ovh/public-cloud-roadmap/issues/77).
+
 ## Registry
 
 Docker Images are currently stored [here](https://hub.docker.com/repository/docker/mendrugory/openstackcli).
