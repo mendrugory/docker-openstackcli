@@ -2,6 +2,10 @@
 
 An Openstack CLI tool in Docker container in order to be used into your CI/CD pipelines or Kubernetes clusters.
 
+## Registry
+
+Docker Images are currently stored [here](https://hub.docker.com/repository/docker/mendrugory/openstackcli).
+
 ## Building Image
 
 ```bash
