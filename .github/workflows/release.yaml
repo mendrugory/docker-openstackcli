@@ -5,14 +5,15 @@ on:
 
 name: Publish Docker Image
 env:
-  IMAGE: "openstackcli" 
+  IMAGE: "openstackcli"
+  REGISTRY: "index.docker.io"
 jobs:
   docker:
     runs-on: ubuntu-latest
     name: build
     steps:
       - name: login 
-        run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
+        run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} ${{ env.REGISTRY }}
       - name: Checkout Code
         uses: actions/checkout@master
       - name: building
